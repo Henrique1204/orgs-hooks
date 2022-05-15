@@ -2,6 +2,7 @@ import React from 'react';
 import ReactNative from 'react-native';
 
 import TopoLista from '../TopoLista';
+import ItemCard from '../ItemCard';
 
 import {cerregarProdutores} from '../../../../servicos/carregar-dados';
 
@@ -26,9 +27,7 @@ const Produtores = ({children}) => {
           <TopoLista>{dadosProdutores.titulo}</TopoLista>
         </>
       )}
-      renderItem={({item: {nome}}) => (
-        <ReactNative.Text>{nome}</ReactNative.Text>
-      )}
+      renderItem={({item}) => <ItemCard {...item} />}
     />
   );
 };
