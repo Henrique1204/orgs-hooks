@@ -14,9 +14,11 @@ export default StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
     lineHeight: 42,
+    color: '#464646',
   },
   Legenda: {
     fontSize: 16,
     lineHeight: 26,
+    color: '#A3A3A3',
   },
 });
