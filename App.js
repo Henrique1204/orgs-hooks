@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactNative from 'react-native';
 
+import Home from './src/telas/Home';
+
 const App = () => {
   return (
     <ReactNative.SafeAreaView>
-      <ReactNative.Text>Alura</ReactNative.Text>
+      <Home />
     </ReactNative.SafeAreaView>
   );
 };
