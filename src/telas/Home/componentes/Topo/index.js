@@ -3,17 +3,21 @@ import ReactNative from 'react-native';
 
 import Estilos from './estilos';
 
-import Logo from '../../../../assets/logo.png';
+import {logo} from '../../../../assets';
+
+import Mock from '../../../../mocks/topo';
 
 const Topo = () => {
   return (
     <ReactNative.View style={Estilos.Topo}>
-      <ReactNative.Image source={Logo} style={Estilos.Imagem} />
+      <ReactNative.Image source={logo} style={Estilos.Imagem} />
 
-      <ReactNative.Text style={Estilos.BoasVindas}>Olá, Paulo</ReactNative.Text>
+      <ReactNative.Text style={Estilos.BoasVindas}>
+        {Mock.boasVindas}
+      </ReactNative.Text>
 
       <ReactNative.Text style={Estilos.Legenda}>
-        Encontro os melhores produtores
+        {Mock.legenda}
       </ReactNative.Text>
     </ReactNative.View>
   );
