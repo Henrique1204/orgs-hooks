@@ -4,13 +4,24 @@ import ReactNative from 'react-native';
 import Estilos from './estilos';
 import Estrelas from '../../../../componentes/Estrelas';
 
+const reducer = state => !state;
+
+const gerarDistanciaEmMetros = distancia => {
+  return `${distancia}m`;
+};
+
 const ItemCard = ({nome, imagem, distancia, estrelas}) => {
-  const [selecionado, setSelecionado] = React.useState(false);
+  const [selecionado, inverterSelecionado] = React.useReducer(reducer, false);
+
+  const distanciaEmMetros = React.useMemo(
+    () => gerarDistanciaEmMetros(distancia),
+    [distancia],
+  );
 
   return (
     <ReactNative.TouchableOpacity
       style={Estilos.card}
-      onPress={() => setSelecionado(prevSelecionado => !prevSelecionado)}>
+      onPress={inverterSelecionado}>
       <ReactNative.Image
         source={imagem}
         accessibilityLabel={nome}
@@ -25,7 +36,7 @@ const ItemCard = ({nome, imagem, distancia, estrelas}) => {
         </ReactNative.View>
 
         <ReactNative.Text style={Estilos.distancia}>
-          {distancia}
+          {distanciaEmMetros}
         </ReactNative.Text>
       </ReactNative.View>
     </ReactNative.TouchableOpacity>

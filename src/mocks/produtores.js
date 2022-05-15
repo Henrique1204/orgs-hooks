@@ -24,7 +24,7 @@ const gerarListaRandom = () => {
   return Object.entries(ProdutosAssets).map(([nome, imagem]) => ({
     nome: gerarNome(nome),
     imagem,
-    distancia: gerarNumeroAleatorio(1, 500) + 'm',
+    distancia: gerarNumeroAleatorio(1, 500),
     estrelas: gerarNumeroAleatorio(1, 5),
   }));
 };
