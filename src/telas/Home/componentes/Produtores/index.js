@@ -4,27 +4,23 @@ import ReactNative from 'react-native';
 import TopoLista from '../TopoLista';
 import ItemCard from '../ItemCard';
 
-import {cerregarProdutores} from '../../../../servicos/carregar-dados';
+import useProdutores from '../../../../hooks/useProdutores';
 
 const Produtores = ({children}) => {
-  const [dadosProdutores, setDadosProdutores] = React.useState(null);
+  const dados = useProdutores();
 
-  React.useEffect(() => {
-    setDadosProdutores(cerregarProdutores());
-  }, []);
-
-  if (!dadosProdutores) {
+  if (!dados) {
     return null;
   }
 
   return (
     <ReactNative.FlatList
-      data={dadosProdutores.lista}
+      data={dados.lista}
       keyExtractor={({nome}) => nome}
       ListHeaderComponent={() => (
         <>
           {children}
-          <TopoLista>{dadosProdutores.titulo}</TopoLista>
+          <TopoLista>{dados.titulo}</TopoLista>
         </>
       )}
       renderItem={({item}) => <ItemCard {...item} />}
