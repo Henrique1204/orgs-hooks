@@ -3,21 +3,29 @@ import ReactNative from 'react-native';
 
 import Estilos from './estilos';
 
-import {logo} from '../../../../assets';
-
-import Mock from '../../../../mocks/topo';
+import {cerregarTopo} from '../../../../servicos/carregar-dados';
 
 const Topo = () => {
+  const [dadosTopo, setDadosTop] = React.useState(null);
+
+  React.useEffect(() => {
+    setDadosTop(cerregarTopo());
+  }, []);
+
+  if (!dadosTopo) {
+    return null;
+  }
+
   return (
     <ReactNative.View style={Estilos.Topo}>
-      <ReactNative.Image source={logo} style={Estilos.Imagem} />
+      <ReactNative.Image source={dadosTopo.logo} style={Estilos.Imagem} />
 
       <ReactNative.Text style={Estilos.BoasVindas}>
-        {Mock.boasVindas}
+        {dadosTopo?.boasVindas}
       </ReactNative.Text>
 
       <ReactNative.Text style={Estilos.Legenda}>
-        {Mock.legenda}
+        {dadosTopo?.legenda}
       </ReactNative.Text>
     </ReactNative.View>
   );
