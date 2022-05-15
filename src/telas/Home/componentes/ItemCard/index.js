@@ -2,10 +2,15 @@ import React from 'react';
 import ReactNative from 'react-native';
 
 import Estilos from './estilos';
+import Estrelas from '../../../../componentes/Estrelas';
 
 const ItemCard = ({nome, imagem, distancia, estrelas}) => {
+  const [selecionado, setSelecionado] = React.useState(false);
+
   return (
-    <ReactNative.View style={Estilos.card}>
+    <ReactNative.TouchableOpacity
+      style={Estilos.card}
+      onPress={() => setSelecionado(prevSelecionado => !prevSelecionado)}>
       <ReactNative.Image
         source={imagem}
         accessibilityLabel={nome}
@@ -13,13 +18,17 @@ const ItemCard = ({nome, imagem, distancia, estrelas}) => {
       />
 
       <ReactNative.View style={Estilos.informacoes}>
-        <ReactNative.Text style={Estilos.nome}>{nome}</ReactNative.Text>
+        <ReactNative.View>
+          <ReactNative.Text style={Estilos.nome}>{nome}</ReactNative.Text>
+
+          <Estrelas nome={nome} quantidade={estrelas} editavel={selecionado} />
+        </ReactNative.View>
 
         <ReactNative.Text style={Estilos.distancia}>
           {distancia}
         </ReactNative.Text>
       </ReactNative.View>
-    </ReactNative.View>
+    </ReactNative.TouchableOpacity>
   );
 };
 

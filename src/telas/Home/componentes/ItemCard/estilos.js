@@ -8,6 +8,7 @@ export default StyleSheet.create({
     marginHorizontal: 16,
     backgroundColor: '#F4F4F4',
     flexDirection: 'row',
+    alignItems: 'center',
 
     // Sombra Android
     elevation: 4,
